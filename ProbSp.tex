@@ -1,0 +1,118 @@
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+\usepackage{amsthm}
+\usepackage{graphics}
+\usepackage{mathrsfs}
+\usepackage{txfonts}
+\usepackage{stfloats}
+\usepackage{pgfplots}
+\usepackage{cite}
+\usepackage{cases}
+\usepackage{mathtools}
+\usepackage{caption}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{mathtools}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{array}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage{hhline}
+
+
+\title{Probability\&RV \\ Assignment-01}
+\author{U Anuradha-ee21resch01008}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem(9.3)}
+random variable $z=n1-n2$, where $n1,n2\sim N(0,1)$
+prove that z is a Gaussian random variable and find mean and variance of z.comment it.
+\section{Solution}
+Let x=n1 and  y=n2 then  z=x-y \\
+Moment Generating Function (MGF)is given by 
+\begin{equation}
+   M_t(s)=E[e^{-st}] 
+\end{equation}\\
+pdf of x is 
+\begin{equation}
+    f_X(x)=\frac{1}{\sqrt{2\pi}\sigma_x}e^{-\frac{(x-\mu_x)^2}{2\sigma_x^2}}
+\end{equation} \\
+MGF of x is \\
+$M_x(s)=\int_{-\infty}^{\infty}e^{-sx}f(x) dx $ \\
+above equation represents Fourier Transform of f(x),we know that the F.T of $f_X(x)$ is
+\begin{equation}
+      M_x(s)=e^{-s\mu_x}e^{-\frac{s^2\sigma_x^2}{2}}
+\end{equation}
+similarly pdf of y is
+\begin{equation}
+    f_Y(y)=\frac{1}{\sqrt{2\pi}\sigma_y}e^{-\frac{(y-\mu_y)^2}{2\sigma_y^2}}
+\end{equation}
+MGF of $f_Y(y)$
+\begin{equation}
+    M_y(s)=e^{-s\mu_y}e^{-\frac{s^2\sigma_y^2}{2}}
+\end{equation}
+MGF of z can be written as \\
+$M_z(s)=E[e^{-(x+y)s}]=M_x(s)\times M_y(s)$\\
+by substituting eq(3) and eq(5) in $M_z(s)$\\
+\begin{equation}
+    M_z(s)=e^{-s(\mu_x+\mu_y)}e^{-\frac{s^2(\sigma_x^2+\sigma_y^2)}{2}}
+\end{equation} 
+\begin{equation}
+   \therefore f_Z(z)=\frac{1}{\sqrt{2\pi}\sigma_z}e^{-\frac{(z-(\mu_x+\mu_y))^2}{2(\sigma_x^2+\sigma_y^2)}}
+\end{equation}
+lets substitute values $\mu_x=\mu_y=0$ and $\sigma_x^2=\sigma_y^2=1$ in above equations
+\begin{equation}
+    f_X(x)=\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}
+\end{equation}
+\begin{equation}
+    f_Y(y)=\frac{1}{\sqrt{2\pi}}e^{-\frac{y^2}{2}}
+\end{equation}
+\begin{equation}
+    M_x(s)=e^{-\frac{s^2}{2}}
+\end{equation}
+\begin{equation}
+    M_y(s)=e^{-\frac{s^2}{2}}
+\end{equation}
+\begin{equation}
+    M_z(s)=e^{-s^2}
+\end{equation}\\
+finally
+\begin{equation}
+  f_Z(z)=\frac{1}{\sqrt{2\pi}}e^{-\frac{z^2}{4}}
+\end{equation}
+\begin{tikzpicture}
+   \begin{axis}[axis lines=left,xlabel={$x$},ylabel={$f_X(x)$}]
+     \addplot[domain=-5:5, samples=20,color=red]{e^(-(x^2)/2)};
+    \end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+   \begin{axis}[axis lines=left,xlabel={$y$},ylabel={$f_Y(y)$}]
+     \addplot[domain=-5:5, samples=20,color=green]{e^(-(x^2)/2};
+   \end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}
+ \begin{axis}[axis lines=left,xlabel={$z$},ylabel={$f_Z(z)$}]
+   \addplot[domain=-5:5, samples=20,color=blue]{e^(-(x^2)/4)/2};
+ \end{axis}
+\end{tikzpicture}
+\section{Conclusion}\\
+Random variable which is either sum or difference of two standard normal variables is also a normal variable.\\
+$ \mu_z=\mu_x+\mu_y=0$ and $\sigma_z^2=\sigma_x^2+\sigma_y^2=2$
+
+
+\end{document}
